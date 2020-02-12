@@ -1,4 +1,7 @@
 <%= form_for product do |form| %>
+  <%= form.label :images,'商品圖片' %>
+  <%= form.file_field :images, multiple: true %>
+
   <%= form.label :name, '商品名稱' %>
   <%= form.text_field :name %>
 

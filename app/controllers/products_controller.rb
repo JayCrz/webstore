@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, except:[:index, :new]
+  before_action :find_product, except:[:index, :new, :create]
   def index
     @product = Product.all
   end
@@ -34,7 +34,8 @@ class ProductsController < ApplicationController
                                     :list_price,
                                     :sell_price,
                                     :stock,
-                                    :status)
+                                    :status,
+                                    images: [])
   end
 
   def find_product

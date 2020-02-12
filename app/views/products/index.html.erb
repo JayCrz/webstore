@@ -1,6 +1,10 @@
 <%= link_to '新增商品', new_product_path %>
 
 <% @product.each do |product| %>
+  <%# product.images.each do |i| %>
+    <%# image_tag i.variant(resize_to_limit: [300, 300]) %>
+  <%# end %>
+  <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]) %>
   <%= link_to product.name, product_path(product.id) %>
   <%= product.list_price %>
   <%= product.sell_price %>
