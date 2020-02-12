@@ -1,0 +1,25 @@
+<%= form_for product do |form| %>
+  <%= form.label :name, '商品名稱' %>
+  <%= form.text_field :name %>
+
+  <%= form.label :description, '商品描述' %>
+  <%= form.text_area :description %>
+
+  <%= form.label :sku, 'SKU' %>
+  <%= form.text_field :sku %>
+ 
+  <%= form.label :list_price, '商品原價' %>
+  <%= form.text_field :list_price %>
+ 
+  <%= form.label :sell_price, '商品售價' %>
+  <%= form.text_field :sell_price %>
+ 
+  <%= form.label :stock, '商品庫存' %>
+  <%= form.text_field :stock %>
+ 
+  <%= form.label :status, '商品狀態' %>
+  <%= form.select(:status, [['上架', 'on_sale'],['下架', 'discontinue'],['補貨中', 'replenish']], {}) %>
+
+  <%= form.submit %>
+ 
+<% end %>

@@ -1,1 +1,9 @@
-hihi
+<%= link_to '新增商品', new_product_path %>
+
+<% @product.each do |product| %>
+  <%= link_to product.name, product_path(product.id) %>
+  <%= product.list_price %>
+  <%= product.sell_price %>
+  <%= link_to '編輯', edit_product_path(product.id)	%>
+  <%= link_to '刪除', product_path(product.id), method:'delete' %>
+<% end %>
