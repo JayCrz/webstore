@@ -1,13 +1,21 @@
 <%= link_to '新增商品', new_product_path %>
+<h1>商品列表</h1>
+<div class="container">
+  <div class="row">
+    <% @product.each do |product| %>
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <%= image_check(product) %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to product.name, product_path(product.id) %></h5>
+            <p class="card-text">原價：<%= product.list_price %></p>
+            <p class="card-text">售價：<%= product.sell_price %></p>
+            <%= link_to '編輯', edit_product_path(product.id), class:'btn btn-primary'	%>
+            <%= link_to '刪除', product_path(product.id), method:'delete', class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<% @product.each do |product| %>
-  <%# product.images.each do |i| %>
-    <%# image_tag i.variant(resize_to_limit: [300, 300]) %>
-  <%# end %>
-  <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]) %>
-  <%= link_to product.name, product_path(product.id) %>
-  <%= product.list_price %>
-  <%= product.sell_price %>
-  <%= link_to '編輯', edit_product_path(product.id)	%>
-  <%= link_to '刪除', product_path(product.id), method:'delete' %>
-<% end %>
