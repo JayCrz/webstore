@@ -1,19 +1,17 @@
 <h1>商品列表</h1>
 <div class="container">
-  <%= form_with url: root_path, method:'get', local:true do |form| %>
-    <%= form.label :order_by, '售價' %>
-    <%= form.select(:order_by, [['由高到低', 'sell_price desc'],['由低到高', 'sell_price asc']], {}) %>
-    <%= form.submit '排序', class:'btn btn-info' %>
-  <% end %>
+  <%= link_to '新增商品', new_admin_product_path, class:'btn btn-info' %>
   <div class="row">
     <% @product.each do |product| %>
       <div class="col-3">
         <div class="card" style="width: 18rem;">
           <%= image_check(product) %>
           <div class="card-body">
-            <h5 class="card-title"><%= link_to product.name, product_path(product.id) %></h5>
+            <h5 class="card-title"><%= link_to product.name, admin_product_path(product.id) %></h5>
             <p class="card-text">原價：<%= product.list_price %></p>
             <p class="card-text">售價：<%= product.sell_price %></p>
+            <%= link_to '編輯', edit_admin_product_path(product.id), class:'btn btn-primary'	%>
+            <%= link_to '刪除', admin_product_path(product.id), method:'delete', class:'btn btn-primary' %>
           </div>
         </div>
       </div>
